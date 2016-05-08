@@ -53,9 +53,9 @@ class Spider:
         rows = r_sheet.nrows
         w_xls = copy(r_xls)
         sheet_write = w_xls.get_sheet(0)
-        for i in range(len(self.datas)):
-            for j in range(len(self.datas[i])):
-                sheet_write.write(rows + i, j, self.datas[i][j].decode('utf8'))
+        #for i in range(len(self.datas)):
+        for j in range(len(self.datas[0])):
+            sheet_write.write(rows, j, self.datas[0][j].decode('utf8'))
         w_xls.save(self.file_name)
 
     def get_data(self):
@@ -87,6 +87,7 @@ class Spider:
             for i in items:
                 mid.append(self.myTool.Replace_Char(i.replace("\n","").encode('utf-8')))
             #print mid
+            self.datas = []
             self.datas.append(mid)
         #print self.datas
 
